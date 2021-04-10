@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 using System.Windows.Forms;
 using Microsoft.AspNetCore.Components.WebView.WindowsForms;
 using Microsoft.Extensions.DependencyInjection;
-using Shared.Layout;
 
 namespace WinForms
 {
@@ -20,6 +12,7 @@ namespace WinForms
             InitializeComponent();
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddBlazorWebView();
+            serviceCollection.AddScoped(sp => new HttpClient());
             var blazor = new BlazorWebView()
             {
                 Dock = DockStyle.Fill,

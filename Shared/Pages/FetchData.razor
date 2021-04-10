@@ -39,7 +39,9 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("sample-data/weather.json");
+        // This fails on WinForms due to there being no local file server.
+        // TODO - Swap for alternate API demo
+        forecasts = await Http.GetFromJsonAsync<WeatherForecast[]>("/sample-data/weather.json");
     }
 
     public class WeatherForecast
